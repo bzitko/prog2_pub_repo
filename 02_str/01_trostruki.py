@@ -1,18 +1,14 @@
 """
-💻 suma_parnih
-Za dani prirodni broj n vrati sumu svih parnih brojeva
-manjih od n.
-Npr. za n = 10, brojevi koji su parni i manji od 10 su
-2, 4, 6, 8 i njihova suma je 20
-Koristiti while petlju.
+💻 trostruki
+Za dani string vrati string u kojemu je svaki znak zamijenjen 
+s tri takva ista znaka. 
+Npr., za string "Python" dobije se "PPPyyyttthhhooonnn"
 """
-def suma_parnih(n):
-    s = 0
-    i = 2
-    while i < n:
-        s += i
-        i += 2        
-    return s
+def trostruki(s):
+    t = ""
+    for z in s:
+        t += z * 3
+    return t
 
 
 ##################################################
@@ -32,6 +28,7 @@ def test(func, *ulazi_ocekivano):
     else:
         print(f"{izlazi!r} ❌ != {ocekivano!r}")
 
+
 def title(fun, comment=None):
     """Ispis naziva funkcije"""
     print(f"\n💻 {fun.__name__}",end="")
@@ -44,10 +41,9 @@ def main():
     main() pozivi gornjih funkcija s testnim ulazima,
     koristi test() za provjeru je li rezultat dobar ili nije
     """
-    title(suma_parnih)
-    test(suma_parnih, 10, 20)
-    test(suma_parnih, 15, 56)
-    test(suma_parnih, 100, 2450)
+    title(trostruki)
+    test(trostruki, "Python", "PPPyyyttthhhooonnn")
+    test(trostruki, "Halo!", "HHHaaalllooo!!!")
 
 
 # Standardna shema za zvanje main() funkcije.
