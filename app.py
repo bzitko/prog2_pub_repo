@@ -89,7 +89,8 @@ class CodeEditor(QPlainTextEdit):
     def __init__(self, font_size=12):
         super().__init__()
         self.font_size = font_size
-        font = QFont("Courier New")
+        font = QFont()
+        font.setFamilies(["Courier New", "Consolas", "Monaco", "monospace"])
         font.setStyleHint(QFont.Monospace)
         font.setPointSize(self.font_size)
         self.setFont(font)
@@ -202,7 +203,8 @@ class CodeEditor(QPlainTextEdit):
 
     def setFontSize(self, size):
         self.font_size = size
-        font = QFont("Courier New")
+        font = QFont()
+        font.setFamilies(["Courier New", "Consolas", "Monaco", "monospace"])
         font.setStyleHint(QFont.Monospace)
         font.setPointSize(self.font_size)
         self.setFont(font)
@@ -325,7 +327,10 @@ class NotebookViewer(QMainWindow):
     
             painter = QPainter(pixmap)
             painter.setPen(QColor(color))  # Arrow color
-            font = QFont("Segoe UI Symbol", size // 2) # Font with good Unicode support
+            font = QFont()
+            font.setFamilies(["Courier New"])
+            #font.setFamilies(["Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"])
+            font.setPointSize(size // 2)
             font.setBold(True)
             painter.setFont(font)
             
@@ -431,7 +436,8 @@ class NotebookViewer(QMainWindow):
         self.task_view = QWebEngineView()
         self.code_editor = CodeEditor(self.font_size)
         self.output_view = QPlainTextEdit()
-        font = QFont("Courier New")
+        font = QFont()
+        font.setFamilies(["Courier New", "Consolas", "Monaco", "monospace"])
         font.setStyleHint(QFont.Monospace)
         font.setPointSize(self.font_size)
         self.output_view.setFont(font)
@@ -521,6 +527,7 @@ class NotebookViewer(QMainWindow):
         if cell.type == "markdown":
             # Update Content
             self.markdown_view.setHtml(self.markdown_to_html(cell.source))
+            update_markdown_font(self.markdown_view, self.font_size)
             
             # Visibility
             self.central_stack.setCurrentWidget(self.markdown_view)
@@ -713,6 +720,11 @@ class NotebookViewer(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyleSheet("""
+        QMainWindow::separator {background: palette(window); width: 5px; height: 5px;}
+        QSplitter::handle {background: palette(window); width: 5px; height: 5px;}
+    """)
+
     viewer = NotebookViewer()
     viewer.show()
     sys.exit(app.exec())
