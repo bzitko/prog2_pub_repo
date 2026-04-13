@@ -1,36 +1,36 @@
 def pong(r, s, d):
     a = [[0 for _ in range(s)] for _ in range(r)]
-    x = y = 0
-    dx, dy = 1 if r > 1 else 0, 1 if s > 1 else 0
+    i = j = 0
+    di, dj = 1 if r > 1 else 0, 1 if s > 1 else 0
 
     for b in range(1, d + 1):
-        a[x][y] = b
+        a[i][j] = b
 
-        if dx == 0:
+        if di == 0:
             pass
-        elif dx == 1:
-            if 0 < x == r - 1:
-                dx = -1
+        elif di == 1:
+            if 0 < i == r - 1:
+                di = -1
         else:
-            if x == 0:
-                dx = 1
+            if i == 0:
+                di = 1
 
-        if dy == 0:
+        if dj == 0:
             pass
-        elif dy == 1:
-            if y == s - 1:
-                dy = -1
+        elif dj == 1:
+            if j == s - 1:
+                dj = -1
         else:
-            if y == 0:
-                dy = 1
+            if j == 0:
+                dj = 1
 
-        x += dx
-        y += dy
+        i += di
+        j += dj
 
         
     return a
 
-from helper import *
+from _helper import *
 
 test(pong, 1, 1, 5, [[5]])
 test(pong, 1, 2, 5, [[5, 4]])

@@ -1,0 +1,18 @@
+{
+  "name": "Branko Žitko",
+  "id": 240457796752119,
+  "bazan": [
+    {
+      "num": 0,
+      "time": "2026.04.13 13:48:34.623",
+      "src": "def bazan(b, n):\n    b10 = 0\n    p = len(b) - 1\n    for z in b.lower():\n        if z.isalpha():\n            z10 = 10 + ord(z) - ord(\"a\")\n        else:\n            z10 = int(z)\n\n        b10 += z10 * n ** p\n        p -= 1\n    return b10\n"
+    }
+  ],
+  "pong": [
+    {
+      "num": 0,
+      "time": "2026.04.13 13:49:26.680",
+      "src": "def pong(r, s, d):\n    a = [[0 for _ in range(s)] for _ in range(r)]\n    i = j = 0\n    di, dj = 1 if r > 1 else 0, 1 if s > 1 else 0\n\n    for b in range(1, d + 1):\n        a[i][j] = b\n\n        if di == 0:\n            pass\n        elif di == 1:\n            if 0 < i == r - 1:\n                di = -1\n        else:\n            if i == 0:\n                di = 1\n\n        if dj == 0:\n            pass\n        elif dj == 1:\n            if j == s - 1:\n                dj = -1\n        else:\n            if j == 0:\n                dj = 1\n\n        i += di\n        j += dj\n\n        \n    return a\n"
+    }
+  ]
+}

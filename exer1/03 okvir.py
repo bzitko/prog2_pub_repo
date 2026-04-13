@@ -14,7 +14,8 @@ def okvir(n):
         m.append(red)
     return m
 
-from helper import *
+from _helper import *
+
 test(okvir, 1, [[1]])
 test(okvir, 2, [[1, 1], 
                 [1, 1]])

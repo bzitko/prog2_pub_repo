@@ -22,7 +22,8 @@ def cak(znakovi, koraci):
         rezultat += znakovi[i]
     return rezultat
 
-from helper import *
+from _helper import *
+
 test(cak, "abcde", [1, 2], "bd")
 test(cak, "abcdef", [1, 2, 3], "bde")
 test(cak, "abcdef", [1, 2, 3, -4, 2], "bdeac")

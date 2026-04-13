@@ -11,7 +11,7 @@ def bazan(b, n):
         p -= 1
     return b10
 
-from helper import *
+from _helper import *
 
 test(bazan, "b3a8", 12, 19568)
 test(bazan, "ff", 16, 255)
