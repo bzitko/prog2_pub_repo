@@ -75,7 +75,6 @@ def test(fun, *args_expected):
     print()    
 
 def title(func, comment=None):
-
     print(f"\n💻 {func.__name__}{f' (💡 {comment})' if comment else ''}")
 
 if __name__ == '__main__':
