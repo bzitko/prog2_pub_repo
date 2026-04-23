@@ -33,7 +33,7 @@ def test(fun, *args_expected):
         formatted_args = []
         for arg in args:
             if as_repr:
-                if isinstance(arg, (list, tuple)) and len(arg) > 1 and all(isinstance(row, (list, tuple)) for row in arg):
+                if isinstance(arg, (list, tuple, set, frozenset, dict)) and len(arg) > 1 and all(isinstance(row, (list, tuple, set, frozenset, dict)) for row in arg):
                     width = max(len(repr(row)) for row in arg) + 2
                     lines = pp.pformat(arg, width=width, sort_dicts=False).split("\n")
                     lines = [line.ljust(width, " ") for line in lines]
